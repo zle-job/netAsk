@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+         function tex11() {
+            alert({{ login_flag }});
+        }
+        // javascript模拟用户提交表单
+        function httppost(){
+            alert({{ login_flag }});
+            var temp = document.createElement('form');
+            temp.action = '/user/answer/';
+            temp.method = 'post';
+            temp.style.display = 'none';
+            var text1 = document.createElement('input');
+            text1.name = 'login_flag';
+            text1.value = {{ login_flag }};
+            temp.appendChild(text1);
+            var text2 = document.createElement('input');
+            text2.name = 'email';
+            text2.value = '{{ email }}';
+            temp.appendChild(text2);
+
+            document.body.appendChild(temp);
+            temp.submit();
+
+            return temp;
+        }
+    </script>
+    <div>
+        {{ msg }}
+        <span><a href="javascript:httppost();">在线问答</a></span>
+        <span><a href="#">聊天</a></span>
+{#        <input type="hidden" id='flag' name="login_flag" value="{{ login_flag }}">#}
+{#        <input type="hidden" id="uname" >#}
+    </div>
+</body>
+</html>
